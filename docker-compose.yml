@@ -1,0 +1,29 @@
+services:
+
+  cft_app:
+    build: .
+    restart: always
+    hostname: cft_app
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+    depends_on:
+      - 'postgres'
+    command: bash ./entrypoint.sh
+    env_file: .env
+    ports:
+      - '127.0.0.1:8081:8081'
+
+  postgres:
+    image: postgres:15
+    restart: always
+    hostname: postgres
+    env_file: .env
+    volumes:
+      - '.:/docker-entrypoint-initdb.d'
+      - './docker_data/postgres/data/:/var/lib/postgresql/data'
+    ports:
+      - '127.0.0.1:5444:5432'
+
+volumes:
+  docker_data:

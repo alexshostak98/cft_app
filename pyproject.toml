@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "cft-app"
+version = "0.1.0"
+description = ""
+authors = ["Alexandr Shostak <alexandr_shostak@mail.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^5.0.1"
+python-dotenv = "^1.0.0"
+isort = "^5.13.2"
+psycopg = {extras = ["binary"], version = "^3.1.17"}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
